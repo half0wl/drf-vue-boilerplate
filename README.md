@@ -14,7 +14,7 @@ Frontend with django-webpack-loader, Webpack, and Vue.
 $ virtualenv .venv && source .venv/bin/activate
 $ pip install django
 $ django-admin startproject \
-    --template=https://github.com/half0wl/drf-boilerplate/zipball/master \
+    --template=https://github.com/half0wl/drf-vue-boilerplate/zipball/master \
     <your_project_name>
 $ cd <your_project_name>
 $ pip install -r requirements.txt
