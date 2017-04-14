@@ -16,8 +16,15 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = '/frontend/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend'),)
 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '/bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,7 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webpack_loader',
     'rest_framework',
+
+    'apps.core',
     'apps.accounts',
 ]
 
@@ -43,7 +53,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/html')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

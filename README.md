@@ -4,10 +4,36 @@ Minimal boilerplate for REST API development with Django REST framework.
 
 Comes with JWT authentication and an `accounts` module (only requires email and password).
 
-WIP, more to come with front-end integration.
+Frontend with django-webpack-loader, Webpack, and Vue.
+
+(Messy, work in progress)
+
+### Installation
+
+```bash
+$ virtualenv .venv && source .venv/bin/activate
+$ pip install django
+$ django-admin startproject \
+    --template=https://github.com/half0wl/drf-boilerplate/zipball/master \
+    <your_project_name>
+$ cd <your_project_name>
+$ pip install -r requirements.txt
+$ npm install
+```
+
+### Usage
+
+Migrate db: `$ python manage.py makemigrations accounts && python manage.py migrate`
+
+Start Webpack: `$ npm run frontend`
+
+Start Django: `$ npm run backend`
+
+### Endpoints
 
 ```
 POST api/accounts/register
+
     Params:
         - email
         - password
@@ -15,6 +41,7 @@ POST api/accounts/register
         - User
 
 POST api/accounts/obtain-jwt-token
+
     Params:
         - email
         - password
@@ -24,10 +51,3 @@ POST api/accounts/obtain-jwt-token
 
 
 
-```bash
-$ virtualenv .venv && source .venv/bin/activate
-$ pip install django djangorestframework djangorestframework-jwt
-$ django-admin startproject \
-    --template=https://github.com/half0wl/drf-boilerplate/zipball/master \
-    <your_project_name>
-```
